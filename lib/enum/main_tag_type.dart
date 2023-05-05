@@ -4,6 +4,8 @@ import 'package:getx_sample/pages/common/unknown_page.dart';
 import 'package:getx_sample/pages/home/view/home_page.dart';
 import 'package:getx_sample/pages/project/view/project_page.dart';
 
+import '../pages/my/view/my_page.dart';
+
 enum MainTagType {home, project, my}
 
 extension MainTagTypeExt on MainTagType {
@@ -15,7 +17,7 @@ extension MainTagTypeExt on MainTagType {
       case MainTagType.project:
         return const ProjectPage();
       case MainTagType.my:
-        return const UnknownPage();
+        return const MyPage();
     }
   }
 

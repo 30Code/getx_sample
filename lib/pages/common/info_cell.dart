@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:getx_sample/extension/string_extension.dart';
+import 'package:getx_sample/widget/image.dart';
+import 'package:getx_sample/utils/resource_mananger.dart';
 
 import '../../entity/article_info_entity.dart';
 
@@ -36,16 +38,10 @@ class InfoCell extends StatelessWidget {
   Widget _imageView() {
     return Visibility(
       visible: _model.envelopePic.toString().isNotEmpty,
-      child: SizedBox(
+      child: WrapperImage(
+        url: ImageHelper.wrapAssets("bg_image_loading.png"),
         width: 60,
         height: 60,
-        child: CachedNetworkImage(
-          fit: BoxFit.cover,
-          imageUrl: _model.envelopePic.toString(),
-          placeholder: (context, url) => Image.asset(
-            "assets/images/bg_image_loading.png",
-          ),
-        ),
       ),
     );
   }

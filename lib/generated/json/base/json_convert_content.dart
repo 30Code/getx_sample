@@ -8,6 +8,7 @@ import 'package:flutter/material.dart' show debugPrint;
 import '../../../entity/account_info_entity.dart';
 import '../../../entity/article_info_entity.dart';
 import '../../../entity/banner_entity.dart';
+import '../../../entity/coin_rank_entity.dart';
 import '../../../entity/json_convert_extension.dart';
 import '../../../entity/tab_entity.dart';
 
@@ -21,8 +22,8 @@ class JsonConvert {
 		(ArticleInfoDatas).toString(): ArticleInfoDatas.fromJson,
 		(ArticleInfoDatasTags).toString(): ArticleInfoDatasTags.fromJson,
 		(BannerEntity).toString(): BannerEntity.fromJson,
-		// (CoinRankEntity).toString(): CoinRankEntity.fromJson,
-		// (CoinRankDatas).toString(): CoinRankDatas.fromJson,
+		(CoinRankEntity).toString(): CoinRankEntity.fromJson,
+		(CoinRankDatas).toString(): CoinRankDatas.fromJson,
 		// (HotKeyEntity).toString(): HotKeyEntity.fromJson,
 		// (MyCoinEntity).toString(): MyCoinEntity.fromJson,
 		// (MyCoinHistoryEntity).toString(): MyCoinHistoryEntity.fromJson,
@@ -120,12 +121,12 @@ class JsonConvert {
 		if(<BannerEntity>[] is M){
 			return data.map<BannerEntity>((Map<String, dynamic> e) => BannerEntity.fromJson(e)).toList() as M;
 		}
-		// if(<CoinRankEntity>[] is M){
-		// 	return data.map<CoinRankEntity>((Map<String, dynamic> e) => CoinRankEntity.fromJson(e)).toList() as M;
-		// }
-		// if(<CoinRankDatas>[] is M){
-		// 	return data.map<CoinRankDatas>((Map<String, dynamic> e) => CoinRankDatas.fromJson(e)).toList() as M;
-		// }
+		if(<CoinRankEntity>[] is M){
+			return data.map<CoinRankEntity>((Map<String, dynamic> e) => CoinRankEntity.fromJson(e)).toList() as M;
+		}
+		if(<CoinRankDatas>[] is M){
+			return data.map<CoinRankDatas>((Map<String, dynamic> e) => CoinRankDatas.fromJson(e)).toList() as M;
+		}
 		// if(<HotKeyEntity>[] is M){
 		// 	return data.map<HotKeyEntity>((Map<String, dynamic> e) => HotKeyEntity.fromJson(e)).toList() as M;
 		// }
