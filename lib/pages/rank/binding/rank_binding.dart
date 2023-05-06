@@ -8,11 +8,11 @@ class RankBinding extends Bindings {
 
   @override
   void dependencies() {
-    Get.lazyPut(() => RankRepository(),);
-
-    Get.lazyPut(tag: className(RankController), () => RefreshController(initialRefresh: true),);
-
-    Get.lazyPut<int>(tag: className(RankController), () => 1,);
+    // Get.lazyPut(() => RankRepository(),);
+    //
+    // Get.lazyPut(tag: className(RankController), () => RefreshController(initialRefresh: true),);
+    //
+    // Get.lazyPut<int>(tag: className(RankController), () => 1,);
 
     Get.lazyPut(() => RankController(),);
   }

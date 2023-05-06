@@ -37,16 +37,9 @@ abstract class Routes {
       page: () => const MainPage(),
       bindings: [
         MainBinding(),
-        HomeBinding(),
+        RankBinding(),
         ProjectBinding(),
-        MyBinding(),
-        AccountBinding(),
       ]
-    ),
-    GetPage(
-      name: Routes.coinRink,
-      page: () => const RankPage(),
-      binding: RankBinding(),
     ),
     GetPage(
       name: login,

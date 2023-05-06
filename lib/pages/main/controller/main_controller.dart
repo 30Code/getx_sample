@@ -1,13 +1,21 @@
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MainController extends GetxController {
 
-  var selectedIndex = 0;
+  late PageController pageController;
 
-  void onItemTapped(int index) {
-    selectedIndex = index;
-    update();
+  @override
+  void onInit() {
+    super.onInit();
+    pageController = PageController();
+  }
+
+  @override
+  void onClose() {
+    pageController.dispose();
+    super.onClose();
   }
 
 }
