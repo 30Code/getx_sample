@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/resource_mananger.dart';
+import '../utils/resource_manager.dart';
 
 enum ImageType {
   normal,

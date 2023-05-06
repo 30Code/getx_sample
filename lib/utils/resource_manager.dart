@@ -26,14 +26,15 @@ class ImageHelper {
         child: CupertinoActivityIndicator(radius: min(10.0, width / 3)));
   }
 
-  static Widget error({required double width, required double height, double size = 100}) {
+  static Widget error({required double width, required double height, double size = 85}) {
     return SizedBox(
         width: width,
         height: height,
         child: Icon(
           Icons.error_outline,
           size: size,
-        ));
+        ),
+    );
   }
 
   static String randomUrl(

@@ -28,8 +28,7 @@ final loggerPlugin = PrettyDioLogger(
 /// 网络请求loading与dismiss插件
 final networkActivityPlugin = NetworkActivityPlugin(
   networkActivityCallback: (change, options) {
-    final result =
-        kWhiteList.where((element) => options.path.contains(element));
+    final result = kWhiteList.where((element) => options.path.contains(element));
     if (result.isNotEmpty) {
       switch (change) {
         case NetworkActivityChangeType.began:

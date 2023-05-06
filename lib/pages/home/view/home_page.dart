@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:getx_sample/pages/common/refresh_header_footer.dart';
 import 'package:getx_sample/pages/common/refresh_status_view.dart';
 import 'package:getx_sample/pages/home/controller/home_controller.dart';
+import 'package:getx_sample/pages/my/controller/my_controller.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../logger/logger.dart';
@@ -17,6 +18,8 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final myController = Get.find<MyController>();
+    myController.autoLogin();
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
           middle: const Text("首页"),

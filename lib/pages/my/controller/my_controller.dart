@@ -26,6 +26,7 @@ class MyController extends BaseRequestController<MyRepository, AccountInfoEntity
     String msg;
     if (response.isSuccess && response.data != null) {
       await AccountManager().save(info: response.data!, isLogin: true, password: password);
+      await getUserCoinInfo();
       msg = '登录成功';
     } else {
       msg = '登录失败';
