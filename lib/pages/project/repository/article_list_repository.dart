@@ -15,8 +15,9 @@ class ArticleListRepository extends IRepository {
         params['cid'] = id.toString();
         final api = "${Api.getProjectClassifyList}${page.toString()}/json";
         return await http.Request.get(api: api, params: params);
-      case TagType.tree:
-        return BaseEntity<PageEntity<List<ArticleInfoDatas>>>(null, null, null);
+      case TagType.publicNumber:
+        final api = "${Api.getPubilicNumberList}${id.toString()}/${page.toString()}/json";
+        return await http.Request.get(api: api);
     }
   }
 }

@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_sample/pages/home/view/home_page.dart';
 import 'package:getx_sample/pages/main/controller/main_controller.dart';
 import 'package:getx_sample/pages/rank/view/rank_page.dart';
 import 'package:getx_sample/resource/res.dart';
 import 'package:getx_sample/resource/strings.dart';
 import 'package:getx_sample/widget/keep_alive_wrapper.dart';
 import 'package:getx_sample/widget/lottie_bottom_bar.dart';
-
-import '../../common/unknown_page.dart';
 
 class MainPage extends GetView<MainController> {
 
@@ -26,8 +24,8 @@ class MainPage extends GetView<MainController> {
                     physics: const NeverScrollableScrollPhysics(),
                     controller: controller.pageController,
                     children: [
-                      KeepAliveWrapper(
-                        child: UnknownPage(),
+                      const KeepAliveWrapper(
+                        child: HomePage(),
                       ),
                       KeepAliveWrapper(
                         child: RankPage(),

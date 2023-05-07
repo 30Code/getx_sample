@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:getx_sample/pages/common/h_article_card.dart';
 import 'package:getx_sample/pages/common/refresh_header_footer.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../routes/routes.dart';
-import '../../common/info_cell.dart';
 import '../controller/rank_tab_controller.dart';
 
 class RankTabPage extends StatefulWidget {
@@ -46,7 +46,7 @@ class _RankTabPageState extends State<RankTabPage> with AutomaticKeepAliveClient
                   }
 
                   final model = widget._controller.dataSource[index];
-                  return InfoCell(
+                  return HArticleCard(
                     model: model,
                     callback: (_) {
                       Get.toNamed(Routes.web, arguments: model);

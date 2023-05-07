@@ -16,12 +16,7 @@ class WrapperImage extends StatelessWidget {
   final BoxFit fit;
   final ImageType imageType;
 
-  WrapperImage(
-      {required this.url,
-      required this.width,
-      required this.height,
-      this.imageType: ImageType.normal,
-      this.fit: BoxFit.cover});
+  WrapperImage({required this.url, required this.width, required this.height, this.imageType: ImageType.normal, this.fit: BoxFit.cover});
 
   @override
   Widget build(BuildContext context) {

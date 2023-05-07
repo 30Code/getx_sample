@@ -1,7 +1,7 @@
 
 import '../http/api.dart';
 
-enum TagType {project, tree}
+enum TagType {project, publicNumber}
 
 extension Ext on TagType {
 
@@ -9,8 +9,8 @@ extension Ext on TagType {
     switch (this) {
       case TagType.project:
         return 1;
-      case TagType.tree:
-        return 0;
+      case TagType.publicNumber:
+        return 1;
     }
   }
 
@@ -18,8 +18,8 @@ extension Ext on TagType {
     switch (this) {
       case TagType.project:
         return Api.getProjectClassify;
-      case TagType.tree:
-        return Api.getTree;
+      case TagType.publicNumber:
+        return Api.getPubilicNumber;
     }
   }
 

@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import 'package:getx_sample/account_manager/account_binding.dart';
 import 'package:getx_sample/pages/home/binding/home_binding.dart';
+import 'package:getx_sample/pages/home/binding/recommend_binding.dart';
 import 'package:getx_sample/pages/main/binding/main_binding.dart';
 import 'package:getx_sample/pages/my/binding/my_binding.dart';
 import 'package:getx_sample/pages/rank/view/rank_page.dart';
@@ -37,6 +38,8 @@ abstract class Routes {
       page: () => const MainPage(),
       bindings: [
         MainBinding(),
+        HomeBinding(),
+        RecommendBinding(),
         RankBinding(),
         ProjectBinding(),
       ]

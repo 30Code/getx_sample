@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:getx_sample/pages/common/unknown_page.dart';
-import 'package:getx_sample/pages/home/view/home_page.dart';
+import 'package:getx_sample/pages/home/view/recommend_page.dart';
 import 'package:getx_sample/pages/project/view/project_page.dart';
 
 import '../pages/my/view/my_page.dart';
@@ -13,7 +13,7 @@ extension MainTagTypeExt on MainTagType {
   Widget get page {
     switch (this) {
       case MainTagType.home:
-        return const HomePage();
+        return const RecommendPage();
       case MainTagType.project:
         return const ProjectPage();
       case MainTagType.my:

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:getx_sample/extension/string_extension.dart';
 import 'package:getx_sample/widget/image.dart';
-import 'package:getx_sample/utils/resource_manager.dart';
 
 import '../../entity/article_info_entity.dart';
 

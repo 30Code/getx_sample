@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/enum/tag_type.dart';
-import 'package:getx_sample/pages/common/unknown_page.dart';
 import 'package:getx_sample/pages/rank/controller/rank_controller.dart';
 import 'package:getx_sample/utils/view_utils.dart';
 import 'package:getx_sample/widget/custom_top_bar.dart';
