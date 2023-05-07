@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/enum/tag_type.dart';
-import 'package:getx_sample/pages/common/unknown_page.dart';
 import 'package:getx_sample/pages/home/controller/home_controller.dart';
 import 'package:getx_sample/pages/home/view/home_tab_page.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -16,7 +14,6 @@ import '../../../widget/custom_top_bar.dart';
 import '../../../widget/hi_tab.dart';
 import '../../../widget/keep_alive_wrapper.dart';
 import '../../common/status_view.dart';
-import '../../project/controller/article_list_controller.dart';
 import '../../project/view/article_list_page.dart';
 import '../controller/home_tab_controller.dart';
 import 'recommend_page.dart';
@@ -33,7 +30,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
 
   final _alreadyRequestIndex = <int>{};
 
-  final List<ArticleListController> _articleListControllers = [];
+  final List<HomeTabController> _articleListControllers = [];
 
   late TabController _tabController;
 
@@ -169,6 +166,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
                 tabController.page = TagType.publicNumber.pageNum;
                 tabController.initPage = TagType.publicNumber.pageNum;
                 Get.put(tabController, tag: category.id.toString());
+                _articleListControllers.add(tabController);
 
                 return KeepAliveWrapper(
                   child: HomeTabPage(
@@ -179,49 +177,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin, Auto
             }).toList()
         ),
     );
-  }
-
-  TabBar _tabBar(TabController controller) {
-    return TabBar(
-      tabs: (_homeController.data ?? []).map(
-            (model) {
-          return Tab(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              child: Text(model.name.toString()),
-            ),
-          );
-        },
-      ).toList(),
-      controller: controller,
-      isScrollable: true,
-      indicatorColor: Theme.of(context).primaryColor,
-      indicatorSize: TabBarIndicatorSize.tab,
-      labelStyle: const TextStyle(color: Colors.white, fontSize: 18),
-      unselectedLabelStyle: const TextStyle(color: Colors.grey, fontSize: 16),
-      labelColor: Colors.black,
-      labelPadding: const EdgeInsets.all(0.0),
-      indicatorPadding: const EdgeInsets.all(0.0),
-      indicatorWeight: 2.3,
-      unselectedLabelColor: Colors.grey,
-    );
-  }
-
-  List<Widget> _createProjectPage() {
-    return (_homeController.data ?? []).map((model) {
-      final controller = ArticleListController();
-      controller.tagType = _homeController.type;
-      controller.id = model.id.toString();
-      controller.request = Get.find();
-      controller.refreshController = RefreshController(initialRefresh: true);
-      controller.page = _homeController.type.pageNum;
-      controller.initPage = _homeController.type.pageNum;
-      Get.put(controller, tag: model.id.toString());
-      _articleListControllers.add(controller);
-      return ArticleListPage(
-        controller: controller,
-      );
-    }).toList();
   }
 
   @override

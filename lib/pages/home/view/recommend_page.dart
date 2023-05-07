@@ -21,41 +21,41 @@ class RecommendPage extends GetView<RecommendController> {
   Widget build(BuildContext context) {
     // final myController = Get.find<MyController>();
     // myController.autoLogin();
-    return Container(
-        color: ColorRes.color_F5F5F9,
-        child: RefreshStatusView(
-          controller: controller,
-          contentBuilder: (_) {
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: SmartRefresher(
-                enablePullUp: true,
-                header: const RefreshHeader(),
-                footer: const RefreshFooter(),
-                controller: controller.refreshController,
-                onRefresh: controller.onRefresh,
-                onLoading: controller.onLoadMore,
-                child: CustomScrollView(
-                  cacheExtent: 700,
-                  slivers: <Widget>[
-                    SliverToBoxAdapter(
-                      child: _buildBanner(controller.banners),
-                    ),
-                    //瀑布流
-                    SliverMasonryGrid.count(
-                        childCount: controller.dataSource.length,
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 5.h,
-                        crossAxisSpacing: 5.w,
-                        itemBuilder: (context, index) {
-                          return _buildArticleCard(index);
-                        }),
-                  ],
-                ),
+
+    return GetBuilder<RecommendController>(
+      builder: ((controller) {
+        return Container(
+          color: ColorRes.color_F5F5F9,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: SmartRefresher(
+              enablePullUp: true,
+              header: const RefreshHeader(),
+              footer: const RefreshFooter(),
+              controller: controller.refreshController,
+              onRefresh: controller.onRefresh,
+              onLoading: controller.onLoadMore,
+              child: CustomScrollView(
+                cacheExtent: 700,
+                slivers: <Widget>[
+                  SliverToBoxAdapter(
+                    child: _buildBanner(controller.banners),
+                  ),
+                  //瀑布流
+                  SliverMasonryGrid.count(
+                      childCount: controller.dataSource.length,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 5.h,
+                      crossAxisSpacing: 5.w,
+                      itemBuilder: (context, index) {
+                        return _buildArticleCard(index);
+                      }),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          ),
+        );
+      }),
     );
   }
 
