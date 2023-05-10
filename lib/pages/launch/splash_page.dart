@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/bg_login_pic.webp"),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
             ),
           ),
         ),

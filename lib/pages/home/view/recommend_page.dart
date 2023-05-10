@@ -73,7 +73,7 @@ class RecommendPage extends GetView<RecommendController> {
   Widget _buildArticleCard(int index) {
     final model = controller.dataSource[index];
     return ArticleCard(model: model, callback: (_) async {
-      Get.toNamed(Routes.web, arguments: model);
+      Get.toNamed(Routes.articleDetail, arguments: "402");
     },);
   }
 }

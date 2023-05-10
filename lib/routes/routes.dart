@@ -1,6 +1,8 @@
 
 import 'package:get/get.dart';
 import 'package:getx_sample/account_manager/account_binding.dart';
+import 'package:getx_sample/pages/article_detail/binding/article_detail_binding.dart';
+import 'package:getx_sample/pages/article_detail/view/article_detail_page.dart';
 import 'package:getx_sample/pages/home/binding/home_binding.dart';
 import 'package:getx_sample/pages/home/binding/recommend_binding.dart';
 import 'package:getx_sample/pages/main/binding/main_binding.dart';
@@ -26,6 +28,7 @@ abstract class Routes {
   static const myCollect = "/myCollect";
   static const coinRink = '/coinRink';
   static const hotKey = "/hotKey";
+  static const articleDetail = "/articleDetail";
   static const unknown = "/unknown";
 
   static final routePage = [
@@ -47,6 +50,11 @@ abstract class Routes {
     GetPage(
       name: login,
       page: () => LoginPage(),
+    ),
+    GetPage(
+      name: Routes.articleDetail,
+      page: () => ArticleDetailPage(),
+      binding: ArticleDetailBinding(),
     ),
   ];
 
