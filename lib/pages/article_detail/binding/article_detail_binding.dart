@@ -10,9 +10,9 @@ class ArticleDetailBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => ArticleDetailRepository(),);
 
-    Get.lazyPut(tag: className(ArticleDetailController), () => RefreshController(initialRefresh: true),);
-
-    Get.lazyPut(tag: className(ArticleDetailController), () => 1);
+    // Get.lazyPut(tag: className(ArticleDetailController), () => RefreshController(initialRefresh: true),);
+    //
+    // Get.lazyPut(tag: className(ArticleDetailController), () => 1);
 
     Get.lazyPut(() => ArticleDetailController(),);
   }

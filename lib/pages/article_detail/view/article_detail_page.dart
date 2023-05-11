@@ -3,25 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/pages/article_detail/controller/article_detail_controller.dart';
+import 'package:getx_sample/pages/common/h_article_card.dart';
 import 'package:getx_sample/widget/custom_top_bar.dart';
 import 'package:getx_sample/widget/hi_tab.dart';
+import 'package:getx_sample/widget/player/custom_video_player.dart';
 
+import '../../common/article_detail/expandable_content.dart';
+import '../../common/article_detail/video_header.dart';
+import '../../common/article_detail/video_toolbar.dart';
 import '../../common/refresh_status_view.dart';
+import '../../common/status_view.dart';
 
 class ArticleDetailPage extends GetView<ArticleDetailController> {
 
-  ArticleDetailPage({Key? key}) : super(key: key);
-
-  final _articleDetailController = Get.find<ArticleDetailController>();
+  late ArticleDetailController _articleDetailController;
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = ScreenUtil().screenWidth;
     double playerHeight = screenWidth * (9 / 16);
     return Material(
-      child: RefreshStatusView<ArticleDetailController>(
-        controller: _articleDetailController, 
+      child: StatusView<ArticleDetailController>(
+        controller: controller,
         contentBuilder: (_) {
+          _articleDetailController = controller;
           return Column(
             children: [
               CustomTopBar(
@@ -30,6 +35,7 @@ class ArticleDetailPage extends GetView<ArticleDetailController> {
                 child: _buildVideoView(screenWidth, playerHeight),
               ),
               _buildTabBar(),
+              _buildTabBarView(),
             ],
           );
         },
@@ -72,7 +78,7 @@ class ArticleDetailPage extends GetView<ArticleDetailController> {
         controller: _articleDetailController.tabController,
         children: ArticleDetailController.ad_tabs.map((tab) {
           if (tab['name'] == "简介") {
-            return Container();
+            return _buildInfo();
           } else {
             return Container();
           }
@@ -81,17 +87,65 @@ class ArticleDetailPage extends GetView<ArticleDetailController> {
     );
   }
 
-  /// 视频播放
-  Widget _buildVideoView(double screenWidth, double playerHeight) {
+  /// 推荐视频列表
+  Widget _buildInfo() {
     return Container(
-      alignment: Alignment.center,
-      color: Colors.black,
-      width: screenWidth,
-      height: playerHeight,
-      child: const Text(
-        "正在获取视频数据...",
-        style: TextStyle(color: Colors.white),
+      child: ListView(
+        padding: const EdgeInsets.all(0).r,
+        children: [
+          if (_articleDetailController.data?[0] != null) ..._buildMenu(),
+          if (_articleDetailController.data?[0] != null) ..._buildVideoList(),
+        ],
       ),
     );
+  }
+
+  /// 视频基础信息
+  List<Widget> _buildMenu() {
+    var videoInfo = _articleDetailController.data![0];
+    return [
+      VideoHeader(videoInfo),
+      ExpandableContent(videoInfo: videoInfo),
+      //支持点赞和收藏
+      ViewToolBar(
+        videoDetailMo: videoInfo,
+        onLike: _articleDetailController.likeClick,
+        onUnLike: _articleDetailController.unlikeClick,
+        onFavorite: _articleDetailController.favoriteClick,
+      ),
+    ];
+  }
+
+  ///视频列表
+  List<Widget> _buildVideoList() {
+    var videoList = _articleDetailController.data!;
+    return videoList.map((video) => HArticleCard(
+      model: video,
+      callback: (_) {
+
+      },
+    ),).toList();
+  }
+
+  /// 视频播放
+  Widget _buildVideoView(double screenWidth, double playerHeight) {
+    var videoInfo = _articleDetailController.data?[0];
+    if (videoInfo?.link != null) {
+      return CustomVideoPlayer(
+        url: "https://media.w3.org/2010/05/sintel/trailer.mp4",
+
+      );
+    } else {
+      return Container(
+        alignment: Alignment.center,
+        color: Colors.black,
+        width: screenWidth,
+        height: playerHeight,
+        child: const Text(
+          "正在获取视频数据...",
+          style: TextStyle(color: Colors.white),
+        ),
+      );
+    }
   }
 }
