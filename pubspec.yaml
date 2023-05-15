@@ -65,6 +65,8 @@ dependencies:
   fijkplayer_skin: ^2.2.8
   # socket 通信
   web_socket_channel: ^2.1.0
+  # 悬浮
+  flutter_overlay: ^1.0.0
 
 dev_dependencies:
   flutter_test:

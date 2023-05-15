@@ -8,7 +8,6 @@ import 'package:getx_sample/utils/view_utils.dart';
 
 import '../../../utils/loading.dart';
 
-
 class ArticleDetailController extends BaseRequestController<ArticleDetailRepository, List<ArticleInfoDatas>>  with GetTickerProviderStateMixin {
   static const ad_tabs = [
     {"key": "introduce", "name": "简介"},
@@ -16,6 +15,9 @@ class ArticleDetailController extends BaseRequestController<ArticleDetailReposit
   ];
 
   late TabController tabController;
+
+  //是否正在输入弹幕
+  var inputShowing = false.obs;
 
   @override
   void onInit() {
@@ -59,6 +61,7 @@ class ArticleDetailController extends BaseRequestController<ArticleDetailReposit
 
   @override
   void onClose() {
+    setStatusBarColor(statusStyle: StatusStyle.DARK_CONTENT);
     tabController.dispose();
     super.onClose();
   }

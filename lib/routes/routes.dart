@@ -8,6 +8,7 @@ import 'package:getx_sample/pages/home/binding/recommend_binding.dart';
 import 'package:getx_sample/pages/main/binding/main_binding.dart';
 import 'package:getx_sample/pages/my/binding/my_binding.dart';
 import 'package:getx_sample/pages/rank/view/rank_page.dart';
+import '../pages/article_detail/binding/article_detail_comment_binding.dart';
 import '../pages/launch/splash_page.dart';
 
 import '../pages/common/unknown_page.dart';
@@ -54,7 +55,10 @@ abstract class Routes {
     GetPage(
       name: Routes.articleDetail,
       page: () => ArticleDetailPage(),
-      binding: ArticleDetailBinding(),
+      bindings: [
+        ArticleDetailBinding(),
+        ArticleDetailCommentBinding(),
+      ]
     ),
   ];
 

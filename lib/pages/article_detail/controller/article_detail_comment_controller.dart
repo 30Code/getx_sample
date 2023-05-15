@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/base/base_refresh_controller.dart';
 import 'package:getx_sample/entity/article_info_entity.dart';
@@ -6,11 +5,8 @@ import 'package:getx_sample/enum/response_status.dart';
 import 'package:getx_sample/enum/scroll_view_action_type.dart';
 import 'package:getx_sample/logger/class_name.dart';
 import 'package:getx_sample/pages/article_detail/repository/article_detail_repository.dart';
-import 'package:getx_sample/utils/view_utils.dart';
 
-import '../../../entity/base_entity.dart';
-
-class ArticleDetailCommentController extends BaseRefreshController<ArticleDetailRepository, ArticleInfoDatas>  with GetTickerProviderStateMixin {
+class ArticleDetailCommentController extends BaseRefreshController<ArticleDetailRepository, ArticleInfoDatas> {
 
   late String id;
 
